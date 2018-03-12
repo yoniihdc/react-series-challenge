@@ -3,37 +3,18 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { requestApiTrending } from '../../actions/';
-import trendingGifsData from '../../data/trendingGifs';
+import GifList from '../gifs/';
 
 class Trending extends Component {
   componentDidMount() {
-    // this.props.requestApiTrending();
-  }
-
-  addToFavorites(gifId, event) {
-    event.preventDefault();
-    console.log(gifId);
-  }
-
-  renderTrendingGifs(trendingGifs) {
-    return trendingGifs.map((gif) => {
-      return (
-        <div className="card">
-          <img src={gif.images.original.url} alt={gif.id} />
-          <div className="fav-button">
-            <button onClick={(e) => this.addToFavorites(gif.id, e)}>Add to ♥</button>
-          </div>
-        </div>
-      )
-    })
+    this.props.requestApiTrending();
   }
 
   render() {
     const { trending } = this.props;
 
-    // return this.renderTrendingGifs(trendingGifsData);
-    return trendingGifsData
-    ? this.renderTrendingGifs(trendingGifsData.data)
+    return trending
+    ? <GifList gifs={trending} />
     : <h1> Loading ... </h1>;
   }
 }
