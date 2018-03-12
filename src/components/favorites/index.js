@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { requestFavorites } from '../../actions/';
 import GifList from '../gifs/';
 
 class Favorites extends Component {
@@ -15,4 +19,9 @@ class Favorites extends Component {
   }
 }
 
-export default Favorites;
+const mapStateToProps = state => ({ favorites: state.favorites.data });
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ requestFavorites }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
