@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/header';
-import Favorites from './components/favorites';
+import Favorites from './components/favorites/';
 import Details from './components/details';
 import Trending from './components/trending/';
 import NotFound from './components/notFound';
